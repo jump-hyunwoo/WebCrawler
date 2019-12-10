@@ -8,6 +8,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import org.jsoup.Jsoup;
@@ -33,7 +34,17 @@ public class RankFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_rank, container, false);
-        new EPLRanking().execute();
+        //new EPLRanking().execute();
+
+        //  update  버튼을 누르면 실시간으로 정보를 업데이트하여 새로운 화면을 띄우게 된다.
+        Button btn = (Button)rootView.findViewById(R.id.button_update_rank);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new EPLRanking().execute();
+            }
+        });
+
         return rootView;
     }
 
